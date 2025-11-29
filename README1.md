@@ -14,29 +14,17 @@
 
 ## 📚 Proje Raporu
 
-📄 **[Proje Raporunu İnceleyin (PDF)](https://github.com/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/blob/main/docs/Sayisal%20G%C3%B6r%C3%BCnt%C3%BC%20%C4%B0%C5%9Fleme%20Proje.pdf)** - Detaylı analiz ve sonuçlar
+📄 **[Proje Raporunu İnceleyin (PDF)](https://github.com/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/blob/main/docs/Sayisal%20G%C3%B6r%C3%BCnt%C3%BC%20%C4%B0%C5%9Fleme%20Proje.pdf)** - Detaylı analiz ve gözlemlerim
 
 ---
 
-## 🚀 2 FARKLI ÇALIŞTIRMA YÖNTEMİ
+## ÇALIŞTIRMA YÖNTEMİ veya LOKAL 
 
-### 🌐 YÖNTEM 1: Google Colab (TEK TIKLA - ÖNERİLEN) ⭐
+### Google Colab 
 
 **Kurulum gerektirmez! Tarayıcıda direkt çalışır.**
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/blob/main/isic_analysis_colab.ipynb)
-
-**Nasıl Kullanılır:**
-1. Yukarıdaki **"Open in Colab"** butonuna tıklayın
-2. Notebook açılınca: `Runtime > Run all` (veya `Ctrl+F9`)
-3. 10-15 dakika bekleyin
-4. Grafikler otomatik görünecek! ✅
-
-**Avantajları:**
-- ✅ Hiçbir şey kurmanıza gerek yok
-- ✅ Tarayıcıda çalışır
-- ✅ Ücretsiz GPU var
-- ✅ Tek tık ile başlar
 
 ---
 
@@ -50,30 +38,27 @@ cd UU_DIP_ISIC_SKIN_LESION_ANALYSIS
 # 2. Gereksinimleri yükleyin
 pip install -r requirements.txt
 
-# 3. Kurulumu test edin (opsiyonel)
-python test_kurulum.py
-
-# 4. Programı çalıştırın
+# 3. Programı çalıştırın
 python isic_project.py
 ```
 
 **Gereksinimler:**
 - Python 3.8+
 - 8 GB RAM
-- 10-15 dakika işlem süresi
+- 1-2 dakika işlem süresi ( ISIC klasörü demo resimler için)
 
 ---
 
-## 📊 Program Ne Yapar?
+## Proje İçeriği
 
-Bu program cilt lezyonu görüntüleri üzerinde **7 ana bölümde** analiz yapar:
+Bu projede, ISIC (International Skin Imaging Collaboration) deri lezyonu veri setinde kapsamlı görüntü işleme tekniklerinin uygulamasını içermektedir.Çalışma kapsamında, ISIC 2018 Skin Lesion Dataset kullanılarak, ISIC deri lezyonu görüntüleri üzerinde hem RGB (renkli) hem grayscale (gri tonlamalı) görüntü işleme tekniklerini uygulanmış, program çıktıları üzerinden adım adım tüm işlemler incelenmiştir.Paylaşılan sonuçlar üzerinden ve programın ürettiği ekran çıktıları üzerinden elde edilen sonuçlar yorumlanmıştır.Çalışma kapsamında, Python tabanlı bir geliştirme yapılmış ve çalışma github’a yüklenmiştir. Çalışma esnasında veri setleri yüklenip analiz edildikten sonra, kanal sayılarını ve dosya boyutu dağılımlarının kontrolü yapılmış, rastgele seçilen görüntüler üzerinden RGB-Grayscale dönüşümleri gerçekleştirilmiş, seçilen görüntülerin minimum piksel değeri, maksimum piksel değeri, ortalama ve standart sapmaları incelenmiştir. Histogram analizi yapılarak, yorumlanmıştır. Sonrasında görüntü işleme ve iyileştirme teknikleri uygulanıp, sonuçları incelenmiştir. (Stretching, Equalization, Gamma). Ardından gürültü azaltma(Median, Gaussian) ve döndürme ve ayna çevirme denenmiştir.FFT kapsamında Fourier dönüşümü yapılmış, Unsharp Masking ve Bicubic Enterpolasyon ile proje tamamlanmıştır.
 
 ### 🎯 Uygulanan Teknikler
 
 1. ✅ **Veri Analizi** - Görüntü özellikleri ve dağılımları
 2. ✅ **Görselleştirme** - RGB vs Grayscale karşılaştırma  
 3. ✅ **Histogram Analizi** - Renk dağılımları
-4. ✅ **Kontrast İyileştirme** - CLAHE, Gamma Correction
+4. ✅ **Kontrast İyileştirme** -  Gamma Correction
 5. ✅ **Gürültü Azaltma** - Median, Gaussian filtreleme
 6. ✅ **Geometrik Dönüşümler** - Döndürme, ayna çevirme
 7. ✅ **Frekans Filtreleme** - FFT, keskinleştirme
@@ -89,7 +74,6 @@ UU_DIP_ISIC_SKIN_LESION_ANALYSIS/
 │
 ├── 📓 isic_analysis_colab.ipynb  # Google Colab notebook
 ├── 🐍 isic_project.py            # Ana Python programı
-├── 🧪 test_kurulum.py            # Kurulum test scripti
 ├── 📄 requirements.txt           # Python gereksinimleri
 ├── 📖 README.md                  # Bu dosya
 │
@@ -97,8 +81,8 @@ UU_DIP_ISIC_SKIN_LESION_ANALYSIS/
 │   └── 📄 Sayisal Görüntü İşleme Proje.pdf  # Proje raporu
 │
 ├── 📁 ISIC/                      # Veri seti
-│   ├── melanoma/
-│   ├── nevus/
+│   ├── 
+│   ├── 
 │   └── ...
 │
 └── 📊 results/                   # Program çıktıları
@@ -130,21 +114,10 @@ UU_DIP_ISIC_SKIN_LESION_ANALYSIS/
 
 ## 📊 Veri Seti
 
-- **Kaynak**: [ISIC Archive](https://www.isic-archive.com/)
+- **Kaynak**: https://challenge.isic-archive.com/data/#2018 , https://www.kaggle.com/datasets/nodoubttome/skin-cancer9-classesisic
 - **Sınıf Sayısı**: 9 farklı cilt kanseri türü
 - **Format**: RGB görüntüler
-
-### Cilt Kanseri Türleri
-
-- Melanoma
-- Nevus
-- Basal cell carcinoma
-- Actinic keratosis
-- Dermatofibroma
-- Pigmented benign keratosis
-- Seborrheic keratosis
-- Squamous cell carcinoma
-- Vascular lesion
+- **Demo**: ISIC klasöründe github üzerinde demo veri seti bulunmaktadır.
 
 ---
 
@@ -155,13 +128,6 @@ UU_DIP_ISIC_SKIN_LESION_ANALYSIS/
 
 ---
 
-## 🆘 Sorun Giderme
-
-### Colab'da Sorun Yaşıyorsanız
-
-1. Sayfayı yenileyin (F5)
-2. `Runtime > Restart runtime`
-3. Tekrar `Run all`
 
 ### Lokal Kurulumda Sorun Yaşıyorsanız
 
@@ -218,7 +184,7 @@ Sorularınız veya önerileriniz için:
 ### Colab İçin (Önerilen):
 1. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/blob/main/isic_analysis_colab.ipynb) ← Buraya tıkla
 2. `Runtime > Run all`
-3. Bitti! ✅
+
 
 ### Lokal İçin:
 ```bash
@@ -241,11 +207,11 @@ Programın ürettiği grafik örnekleri:
 - 🔄 **Geometrik dönüşümler**
 - 📐 **FFT frekans analizleri**
 
-Tüm grafikleri görmek için programı çalıştırın!
+Tüm grafikleri görmek için programı çalıştırabilirsiniz.
 
 ---
 
-⭐ **Projeyi beğendiyseniz yıldız vermeyi unutmayın!** ⭐
+
 
 ---
 
@@ -258,4 +224,4 @@ Tüm grafikleri görmek için programı çalıştırın!
 
 ---
 
-**Son Güncelleme:** Kasım 2024
+**Son Güncelleme:** 29 Kasım 2025
