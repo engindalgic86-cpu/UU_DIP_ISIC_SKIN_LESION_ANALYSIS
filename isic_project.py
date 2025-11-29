@@ -215,7 +215,7 @@ else:
     
     # ==================== BÖLÜM 3: GÖRÜNTÜ İYİLEŞTİRME ====================
     print("\n\n" + "="*70)
-    print("✨ BÖLÜM 3: GÖRÜNTÜ İYİLEŞTİRME")
+    print(" BÖLÜM 3: GÖRÜNTÜ İYİLEŞTİRME")
     print("="*70)
     
     # ⚡ Performans sebebiyle sadece 2 görüntü ekrana bastırıyorum
@@ -416,7 +416,7 @@ print()
 # ==================== 4.1. Median Blur Uygulama ====================
 print("\n 4.1. MEDIAN BLUR İŞLEMİ")
 print("="*70)
-print("💡 Median Blur: Salt-and-Pepper gürültüsünü etkili şekilde azaltmaktadırr")
+print(" Median Blur: Salt-and-Pepper gürültüsünü etkili şekilde azaltmaktadırr")
 print("   Kenar koruma özelliği vardır - detayları korumaktadır")
 print()
 
@@ -488,7 +488,7 @@ sigma = 0  # OpenCV otomatik hesaplar
 for idx, (i, row) in enumerate(sample_images_b4.iterrows()):
     img_rgb = cv2.imread(row['filepath'])
     img_rgb = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2RGB)
-    img_rgb = resize_image(img_rgb, max_size=800)  # ⚡ Küçült
+    img_rgb = resize_image(img_rgb, max_size=800)  #  Küçült
     img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2GRAY)
     
     fig, axes = plt.subplots(2, 4, figsize=(16, 8))
@@ -525,7 +525,7 @@ for idx, (i, row) in enumerate(sample_images_b4.iterrows()):
     plt.close()  # ⚡ Belleği temizle
     print(f" Gaussian blur {idx + 1} kaydedildi")
 
-print("\n💡 Gaussian Blur Yorumu:")
+print("\n Gaussian Blur Yorumu:")
 print("""
 • k=3x3: Hafif bulanıklık, gürültü azaltma minimaldi
 • k=5x5: Orta seviye bulanıklık, dengeli yumuşatma vardır
@@ -537,7 +537,7 @@ print("""
 
 # ==================== 4.3. Median vs Gaussian Karşılaştırması ====================
 print("\n" + "="*70)
-print("⚖️  4.3. MEDIAN vs GAUSSIAN KARŞILAŞTIRMASI")
+print("  4.3. MEDIAN vs GAUSSIAN KARŞILAŞTIRMASI")
 print("="*70)
 
 # İlk görüntü üzerinde detaylı karşılaştırma
@@ -861,7 +861,7 @@ print("""
 """)
 
 print("\n" + "="*70)
-print("🎯 BÖLÜM 5 TAMAMLANDI!")
+print(" BÖLÜM 5 TAMAMLANDI!")
 print("="*70)
 
 
@@ -935,7 +935,7 @@ for idx, (i, row) in enumerate(sample_images_b6.iterrows()):
     plt.close()
     print(f" FFT spektrum {idx + 1} kaydedildi")
 
-print("\n💡 Frekans Spektrumu Yorumu:")
+print("\n Frekans Spektrumu Yorumum:")
 print("""
 • Merkez (beyaz bölge): Düşük frekanslar (genel yapı, arka plan)
 • Kenarlar: Yüksek frekanslar (detaylar, kenarlar, dokular)
@@ -1141,7 +1141,7 @@ print("""
 """)
 
 print("\n" + "="*70)
-print("🎯 BÖLÜM 6 TAMAMLANDI!")
+print(" BÖLÜM 6 TAMAMLANDI!")
 print("="*70)
 
 
@@ -1160,7 +1160,7 @@ print()
 # ==================== 7.1. Unsharp Masking ile Keskinleştirme ====================
 print("\n 7.1. UNSHARP MASKING İLE KESKİNLEŞTİRME")
 print("="*70)
-print("💡 Unsharp Masking: Orijinal - Bulanık = Detaylar")
+print(" Unsharp Masking: Orijinal - Bulanık = Detaylar")
 print("   Orijinal + (Detaylar × miktar) = Keskin Görüntü")
 print()
 
