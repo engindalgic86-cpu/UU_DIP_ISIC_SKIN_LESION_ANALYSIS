@@ -18,7 +18,7 @@
 
 ---
 
-## ÇALIŞTIRMA YÖNTEMİ veya LOKAL 
+## ÇALIŞTIRMA YÖNTEMİ 
 
 ### Google Colab 
 
@@ -28,7 +28,7 @@
 
 ---
 
-### 💻 YÖNTEM 2: Lokal Bilgisayarınızda
+### 💻 Lokal Bilgisayarınızda
 
 ```bash
 # 1. Repoyu klonlayın
