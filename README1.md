@@ -4,11 +4,11 @@
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green.svg)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/blob/main/isic_analysis_colab.ipynb)
 
-##Proje Sahibi: Mustafa Engin Dalgıç
-##Öğrenci No: 254309502
-##Üniversite: Üsküdar Üniversitesi - Bilgisayar Mühendisliği YL
-##Email: engindalgic86@gmail.com
-##Üsküdar Üniversitesi Sayısal Görüntü İşleme dersi kapsamında hazırlanmış ISIC cilt lezyonu analizi projesidir.
+## Proje Sahibi: Mustafa Engin Dalgıç
+## Öğrenci No: 254309502
+## Üniversite: Üsküdar Üniversitesi - Bilgisayar Mühendisliği YL
+## Email: engindalgic86@gmail.com
+## Üsküdar Üniversitesi Sayısal Görüntü İşleme dersi kapsamında hazırlanmış ISIC cilt lezyonu analizi projesidir.
 
 ---
 
