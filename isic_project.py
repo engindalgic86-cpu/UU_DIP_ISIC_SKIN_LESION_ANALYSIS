@@ -68,11 +68,11 @@ def load_image_dataset(data_path):
     return pd.DataFrame(image_data)
 
 # Veri setini yükle
-print("\n🔄 Veri seti yükleniyor...")
-print(f"📁 Veri yolu: {DATA_PATH}")
+print("\n Veri seti yükleniyor...")
+print(f" Veri yolu: {DATA_PATH}")
 
 if not os.path.exists(DATA_PATH):
-    print(f"\n⚠️  DİKKAT: '{DATA_PATH}' yolu bulunamadı!")
+    print(f"\n  DİKKAT: '{DATA_PATH}' yolu bulunamadı!")
     print("Lütfen DATA_PATH değişkenini ISIC klasörünüzün yolu ile değiştirin.")
     print("\nÖrnek:")
     print("  Windows: DATA_PATH = 'C:/Users/YourName/Desktop/ISIC'")
@@ -82,7 +82,7 @@ else:
     
     # ==================== İlk Sonuçları Görüntüleme ====================
     print("\n" + "="*70)
-    print("📊 VERİ SETİ YÜKLEME SONUÇLARI")
+    print(" VERİ SETİ YÜKLEME SONUÇLARI")
     print("="*70)
     
     # İlk birkaç satır
@@ -94,25 +94,25 @@ else:
     
     # ==================== 1.3. Veri Özelliklerinin İncelenmesi ====================
     print("\n" + "="*70)
-    print("🔍 VERİ ÖZELLİKLERİNİN ANALİZİ")
+    print(" VERİ ÖZELLİKLERİNİN ANALİZİ")
     print("="*70)
     
     # Çözünürlük analizi
-    print("\n📐 Çözünürlük İstatistikleri:")
+    print("\n Çözünürlük İstatistikleri:")
     print(f"  - Ortalama genişlik: {train_df['width'].mean():.2f} px")
     print(f"  - Ortalama yükseklik: {train_df['height'].mean():.2f} px")
     print(f"  - Min çözünürlük: {train_df['width'].min()}x{train_df['height'].min()}")
     print(f"  - Max çözünürlük: {train_df['width'].max()}x{train_df['height'].max()}")
     
     # Kanal sayısı analizi
-    print("\n🎨 Kanal Sayısı Dağılımı:")
+    print("\n Kanal Sayısı Dağılımı:")
     channel_counts = train_df['channels'].value_counts()
     for channels, count in channel_counts.items():
         channel_type = "RGB" if channels == 3 else "Grayscale" if channels == 1 else "RGBA"
         print(f"  - {channel_type} ({channels} kanal): {count} görüntü")
     
     # Dosya boyutu analizi
-    print("\n💾 Dosya Boyutu İstatistikleri:")
+    print("\n Dosya Boyutu İstatistikleri:")
     print(f"  - Ortalama: {train_df['file_size_kb'].mean():.2f} KB")
     print(f"  - Minimum: {train_df['file_size_kb'].min():.2f} KB")
     print(f"  - Maksimum: {train_df['file_size_kb'].max():.2f} KB")
@@ -157,22 +157,22 @@ else:
     plt.show()
     plt.close()
     
-    print("\n✅ Grafik '01_veri_analizi.png' olarak kaydedildi!")
+    print("\n Grafik '01_veri_analizi.png' olarak kaydedildi!")
     print("\n" + "="*70)
-    print("🎯 BÖLÜM 1 TAMAMLANDI!")
+    print(" BÖLÜM 1 TAMAMLANDI!")
     print("="*70)
     
     # ==================== BÖLÜM 2: GÖRÜNTÜ GÖRSELLEŞTİRME ====================
     print("\n\n" + "="*70)
-    print("📸 BÖLÜM 2: GÖRÜNTÜ GÖRSELLEŞTİRME")
+    print(" BÖLÜM 2: GÖRÜNTÜ GÖRSELLEŞTİRME")
     print("="*70)
     
-    # Rastgele 9 görüntü seç
+    # Rastgele 9 görüntü seçimi
     np.random.seed(42)
     random_indices = np.random.choice(train_df.index, size=9, replace=False)
     selected_images = train_df.iloc[random_indices]
     
-    # ⚡ PERFORMANS İYİLEŞTİRMESİ: Görüntüleri yeniden boyutlandır
+    #  PERFORMANS İYİLEŞTİRMESİ: Görüntüleri yeniden boyutlandır
     def resize_image(img, max_size=800):
         """Görüntüyü daha küçük boyuta indirir (hız için)"""
         h, w = img.shape[:2]
@@ -211,7 +211,7 @@ else:
     plt.savefig('02_rgb_vs_grayscale.png', dpi=150, bbox_inches='tight')  # DPI düşürüldü
     plt.show()
     plt.close()  # Belleği temizle
-    print("✅ RGB vs Grayscale kaydedildi")
+    print(" RGB vs Grayscale kaydedildi")
     
     # ==================== BÖLÜM 3: GÖRÜNTÜ İYİLEŞTİRME ====================
     print("\n\n" + "="*70)
@@ -245,12 +245,12 @@ else:
                 stretched = image
             return stretched
     
-    print("\n📊 3.1. KONTRAST GERME İŞLEMİ")
+    print("\n 3.1. KONTRAST GERME İŞLEMİ")
     
     for idx, (i, row) in enumerate(sample_images.iterrows()):
         img_rgb = cv2.imread(row['filepath'])
         img_rgb = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2RGB)
-        img_rgb = resize_image(img_rgb, max_size=800)  # ⚡ Küçült
+        img_rgb = resize_image(img_rgb, max_size=800)  #  Küçült
         img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2GRAY)
         
         stretched_rgb = contrast_stretching(img_rgb, is_rgb=True)
@@ -279,10 +279,10 @@ else:
         plt.savefig(f'04_kontrast_germe_{idx + 1}.png', dpi=150, bbox_inches='tight')
         plt.show()
         plt.close()  # ⚡ Belleği temizle
-        print(f"✅ Kontrast germe {idx + 1} kaydedildi")
+        print(f" Kontrast germe {idx + 1} kaydedildi")
     
     # 3.2. Histogram Eşitleme
-    print("\n📈 3.2. HİSTOGRAM EŞİTLEME İŞLEMİ")
+    print("\n 3.2. HİSTOGRAM EŞİTLEME İŞLEMİ")
     
     def histogram_equalization_rgb(image):
         ycrcb = cv2.cvtColor(image, cv2.COLOR_RGB2YCrCb)
@@ -350,11 +350,11 @@ else:
         plt.tight_layout()
         plt.savefig(f'05_histogram_esitleme_{idx + 1}.png', dpi=150, bbox_inches='tight')
         plt.show()
-        plt.close()  # ⚡ Belleği temizle
-        print(f"✅ Histogram eşitleme {idx + 1} kaydedildi")
+        plt.close()  #  Belleği temizle
+        print(f" Histogram eşitleme {idx + 1} kaydedildi")
     
     # 3.3. Gamma Düzeltme
-    print("\n💡 3.3. GAMMA DÜZELTME İŞLEMİ")
+    print("\n 3.3. GAMMA DÜZELTME İŞLEMİ")
     
     def gamma_correction(image, gamma):
         inv_gamma = 1.0 / gamma
@@ -366,7 +366,7 @@ else:
     first_img = sample_images.iloc[0]
     img_rgb = cv2.imread(first_img['filepath'])
     img_rgb = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2RGB)
-    img_rgb = resize_image(img_rgb, max_size=800)  # ⚡ Küçült
+    img_rgb = resize_image(img_rgb, max_size=800)  #  Küçült
     img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2GRAY)
     
     fig, axes = plt.subplots(2, 4, figsize=(16, 8))
@@ -395,29 +395,29 @@ else:
     plt.tight_layout()
     plt.savefig('06_gamma_duzeltme.png', dpi=150, bbox_inches='tight')
     plt.show()
-    plt.close()  # ⚡ Belleği temizle
-    print("✅ Gamma düzeltme kaydedildi")
+    plt.close()  #  Belleği temizle
+    print(" Gamma düzeltme kaydedildi")
     
     print("\n" + "="*70)
-    print("🎯 BÖLÜM 3 TAMAMLANDI!")
+    print(" BÖLÜM 3 TAMAMLANDI!")
     print("="*70)
 
 
 # ==================== BÖLÜM 4: GÜRÜLTÜ AZALTMA ====================
 print("\n\n" + "="*70)
-print("🧹 BÖLÜM 4: GÜRÜLTÜ AZALTMA (NOISE REDUCTION)")
+print(" BÖLÜM 4: GÜRÜLTÜ AZALTMA (NOISE REDUCTION)")
 print("="*70)
 
 # Sadece 2 görüntüyü kullanıyorym
 sample_images_b4 = selected_images.head(2)
-print(f"⚡ Hız için {len(sample_images_b4)} görüntü kullanılıyor")
+print(f" Hız için {len(sample_images_b4)} görüntü kullanılıyor")
 print()
 
 # ==================== 4.1. Median Blur Uygulama ====================
-print("\n📊 4.1. MEDIAN BLUR İŞLEMİ")
+print("\n 4.1. MEDIAN BLUR İŞLEMİ")
 print("="*70)
-print("💡 Median Blur: Salt-and-Pepper gürültüsünü etkili şekilde azaltır")
-print("   Kenar koruma özelliği vardır - detayları korur")
+print("💡 Median Blur: Salt-and-Pepper gürültüsünü etkili şekilde azaltmaktadırr")
+print("   Kenar koruma özelliği vardır - detayları korumaktadır")
 print()
 
 # Farklı kernel boyutları
@@ -460,10 +460,10 @@ for idx, (i, row) in enumerate(sample_images_b4.iterrows()):
     plt.tight_layout()
     plt.savefig(f'07_median_blur_{idx + 1}.png', dpi=150, bbox_inches='tight')
     plt.show()
-    plt.close()  # ⚡ Belleği temizle
-    print(f"✅ Median blur {idx + 1} kaydedildi")
+    plt.close()  #  Belleği temizle
+    print(f" Median blur {idx + 1} kaydedildi")
 
-print("\n💡 Median Blur Yorumu:")
+print("\n Median Blur Yorumu:")
 print("""
 • k=3: Hafif yumuşatma, detaylar korunur
 • k=5: Orta seviye yumuşatma, gürültü azaltma dengelidir
@@ -475,9 +475,9 @@ print("""
 
 # ==================== 4.2. Gaussian Blur Uygulama ====================
 print("\n" + "="*70)
-print("📈 4.2. GAUSSIAN BLUR İŞLEMİ")
+print(" 4.2. GAUSSIAN BLUR İŞLEMİ")
 print("="*70)
-print("💡 Gaussian Blur: Genel yumuşatma sağlar")
+print(" Gaussian Blur: Genel yumuşatma sağlamaktadır")
 print("   Görüntüyü Gaussian çanı(kernel) ile Konvolüsyon")
 print()
 
@@ -523,16 +523,16 @@ for idx, (i, row) in enumerate(sample_images_b4.iterrows()):
     plt.savefig(f'08_gaussian_blur_{idx + 1}.png', dpi=150, bbox_inches='tight')
     plt.show()
     plt.close()  # ⚡ Belleği temizle
-    print(f"✅ Gaussian blur {idx + 1} kaydedildi")
+    print(f" Gaussian blur {idx + 1} kaydedildi")
 
 print("\n💡 Gaussian Blur Yorumu:")
 print("""
-• k=3x3: Hafif bulanıklık, gürültü azaltma minimal
-• k=5x5: Orta seviye bulanıklık, dengeli yumuşatma
-• k=7x7: Güçlü bulanıklık, detay kaybı belirgin
-• Gaussian filtre tüm pikseleri yumuşatır (kenarlar dahil)
-• Rastgele gürültü (Gaussian noise) için etkili
-• Mediana göre daha fazla detay kaybı olur
+• k=3x3: Hafif bulanıklık, gürültü azaltma minimaldi
+• k=5x5: Orta seviye bulanıklık, dengeli yumuşatma vardır
+• k=7x7: Güçlü bulanıklık, detay kaybı belirgindir
+• Gaussian filtre tüm pikseleri yumuşatmaktadır
+• Rastgele gürültü (Gaussian noise) için etkili olmuştur
+• Mediana göre daha fazla detay kaybı olurturmuştur
 """)
 
 # ==================== 4.3. Median vs Gaussian Karşılaştırması ====================
@@ -544,7 +544,7 @@ print("="*70)
 first_img_b4 = sample_images_b4.iloc[0]
 img_rgb = cv2.imread(first_img_b4['filepath'])
 img_rgb = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2RGB)
-img_rgb = resize_image(img_rgb, max_size=800)  # ⚡ Küçült
+img_rgb = resize_image(img_rgb, max_size=800)  #  Küçült
 img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2GRAY)
 
 # k=5 için her iki filtreyi uygula
@@ -586,57 +586,57 @@ plt.tight_layout()
 plt.savefig('09_median_vs_gaussian.png', dpi=150, bbox_inches='tight')
 plt.show()
 plt.close()  # ⚡ Belleği temizle
-print("✅ Karşılaştırma grafiği kaydedildi")
+print(" Karşılaştırma grafiği kaydedildi")
 
 print("\n" + "="*70)
-print("📊 MEDIAN vs GAUSSIAN - DETAYLI KARŞILAŞTIRMA")
+print(" MEDIAN vs GAUSSIAN - DETAYLI KARŞILAŞTIRMA")
 print("="*70)
 print("""
 🔹 MEDIAN BLUR:
-   ✅ Kenarları daha iyi korur
-   ✅ Salt-and-Pepper gürültüsü için çok etkili
-   ✅ Deri lezyonlarının sınırlarını korur
-   ⚠️  Hesaplama daha yavaş
+    Kenarları daha iyi korumuştur
+    Salt-and-Pepper gürültüsü için çok etkili olmuştur
+    Deri lezyonlarının sınırlarını korumuşturç
+    Daha yavaş çalışmaktadır.
    
 🔹 GAUSSIAN BLUR:
-   ✅ Genel yumuşatma için ideal
-   ✅ Rastgele gürültü (Gaussian noise) için etkili
-   ✅ Hesaplama hızlı
-   ⚠️  Kenar detayları kaybolur
-   ⚠️  Lezyon sınırları bulanıklaşır
+    Genel yumuşatma için idealdir.
+    Rastgele gürültü (Gaussian noise) için etkili olmuştur
+    Daha hızlı çalışmıştır
+    Ancak Kenar detayları kaybolmaktadır
+    Lezyon sınırları bulanıklaşmıştır
    
-🎯 DERİ LEZYONLARI İÇİN ÖNERİ:
-   → Median blur tercih edilmeli!
-   → Kenar bilgisi kritik öneme sahip
-   → Lezyon-deri sınırı korunmalı
-   → k=5 dengeli bir seçim
+ DERİ LEZYONLARI İÇİN YORUMUM:
+    Median blur tercih edilmelidir
+    Kenar bilgisi kritik öneme sahiptir
+    Lezyon-deri sınırı korunmalıdır
+    Bu açıdan k=5 dengeli bir seçim olacaktır
 """)
 
 print("\n" + "="*70)
-print("🎯 BÖLÜM 4 TAMAMLANDI!")
+print(" BÖLÜM 4 TAMAMLANDI!")
 print("="*70)
 
 
 # ==================== BÖLÜM 5: DÖNDÜRME VE AYNA ÇEVİRME ====================
 print("\n\n" + "="*70)
-print("🔄 BÖLÜM 5: DÖNDÜRME VE AYNA ÇEVİRME (ROTATION & FLIPPING)")
+print(" BÖLÜM 5: DÖNDÜRME VE AYNA ÇEVİRME (ROTATION & FLIPPING)")
 print("="*70)
 
-# ⚡ PERFORMANS: 3 görüntü kullan
+#  PERFORMANS: 3 görüntü kullan
 sample_images_b5 = selected_images.head(3)
-print(f"⚡ {len(sample_images_b5)} görüntü kullanılıyor")
+print(f" {len(sample_images_b5)} görüntü kullanılıyor")
 print()
 
 # ==================== 5.1. Rastgele Döndürme ====================
-print("\n📊 5.1. RASTGELE DÖNDÜRME (0-10 DERECE)")
+print("\n 5.1. RASTGELE DÖNDÜRME (0-10 DERECE)")
 print("="*70)
-print("💡 Veri augmentation için kullanılır")
-print("   Modelin rotasyona karşı dayanıklılığını artırır")
+print(" Data augmentation için kullanılabilir")
+print("   Modelin rotasyona karşı dayanıklılığını artırmaktadır")
 print()
 
 def rotate_image(image, angle):
     """
-    Görüntüyü belirtilen açıda döndürür
+    Görüntüyü belirtilen açıda döndürmektedir
     """
     h, w = image.shape[:2]
     center = (w // 2, h // 2)
@@ -695,24 +695,24 @@ for idx, (i, row) in enumerate(sample_images_b5.iterrows()):
     plt.savefig(f'10_rotation_{idx + 1}.png', dpi=150, bbox_inches='tight')
     plt.show()
     plt.close()
-    print(f"✅ Döndürme {idx + 1} kaydedildi (Açı: {angle:.2f}°)")
+    print(f" Döndürme {idx + 1} kaydedildi (Açı: {angle:.2f}°)")
 
-print("\n💡 Döndürme Yorumu:")
+print("\n Döndürme Yorumum:")
 print("""
 • 0-10 derece arası hafif döndürme uygulandı
-• Görüntü kenarları BORDER_REFLECT ile dolduruldu
+• Görüntü kenarları BORDER REFLECT ile dolduruldu
 • Lezyon şekli ve özellikleri korundu
 • RGB ve grayscale'de aynı açıyla döndürme yapıldı
-• Veri augmentation için ideal teknik
+• Veri augmentation için ideal teknik olarak değerlendirilebilir
 • Derin öğrenme modellerinin rotasyona dayanıklılığını artırır
 """)
 
 # ==================== 5.2. Yatay Ayna Çevirme (Horizontal Flip) ====================
 print("\n" + "="*70)
-print("🪞 5.2. YATAY AYNA ÇEVİRME (HORIZONTAL FLIP)")
+print(" 5.2. YATAY AYNA ÇEVİRME (HORIZONTAL FLIP)")
 print("="*70)
-print("💡 Sol-sağ simetrisi oluşturur")
-print("   Lezyonların yönden bağımsız tanınmasını sağlar")
+print(" Sol-sağ simetrisi oluşturmakta")
+print("   Lezyonların yönden bağımsız tanınmasını sağlamakta")
 print()
 
 for idx, (i, row) in enumerate(sample_images_b5.iterrows()):
@@ -752,23 +752,23 @@ for idx, (i, row) in enumerate(sample_images_b5.iterrows()):
     plt.savefig(f'11_flip_{idx + 1}.png', dpi=150, bbox_inches='tight')
     plt.show()
     plt.close()
-    print(f"✅ Yatay flip {idx + 1} kaydedildi")
+    print(f" Yatay flip {idx + 1} kaydedildi")
 
-print("\n💡 Yatay Flip Yorumu:")
+print("\n Yatay Flip Yorumum:")
 print("""
 • Sol-sağ ayna görüntüsü oluşturuldu
 • Lezyon özellikleri korundu (şekil, renk, doku)
 • Asimetrik lezyonlarda simetri farkı gözlemlenebilir
 • RGB ve grayscale'de aynı flip işlemi uygulandı
-• Veri augmentation için çok etkili
-• Eğitim veri setini 2 katına çıkarır
+• Veri augmentation için çok etkili olAcaktır
+• Eğitim veri setini 2 katına çıkarmıştır
 """)
 
 # ==================== 5.3. Döndürme + Flip Kombinasyonu ====================
 print("\n" + "="*70)
-print("🎨 5.3. DÖNDÜRME + FLIP KOMBİNASYONU")
+print(" 5.3. DÖNDÜRME + FLIP KOMBİNASYONU")
 print("="*70)
-print("💡 Veri augmentation için en güçlü kombinasyon")
+print(" Data augmentation için en güçlü kombinasyondur")
 print()
 
 # İlk görüntü üzerinde kombinasyon göster
@@ -830,13 +830,13 @@ plt.tight_layout()
 plt.savefig('12_rotation_flip_combined.png', dpi=150, bbox_inches='tight')
 plt.show()
 plt.close()
-print("✅ Kombinasyon grafiği kaydedildi")
+print(" Kombinasyon grafiği kaydedildi")
 
 print("\n" + "="*70)
-print("📊 VERİ AUGMENTATION ANALİZİ")
+print(" DATA AUGMENTATION ANALİZİ")
 print("="*70)
 print("""
-🎯 TEK GÖRÜNTÜDEN ELDE EDİLEBİLECEK VERİ:
+ TEK GÖRÜNTÜDEN ELDE EDİLEBİLECEK VERİ:
    • Orijinal: 1
    • Döndürme (10 farklı açı): +10
    • Yatay flip: +1
@@ -844,20 +844,20 @@ print("""
    ────────────────────────────────
    TOPLAM: 22 farklı görüntü!
    
-📈 1000 GÖRÜNTÜLÜK VERİ SETİ İÇİN:
+ 1000 GÖRÜNTÜLÜK VERİ SETİ İÇİN:
    • Orijinal: 1,000 görüntü
    • Augmentation ile: 22,000 görüntü
-   • %2,100 artış! 🚀
+   • %2,100 artış! �
    
-🔍 SİMETRİ FARKLARI:
+ SİMETRİ FARKLARI:
    • Asimetrik lezyonlar flip sonrası farklı görünür
    • Simetrik lezyonlar flip sonrası benzer kalır
-   • Tanı için asimetri önemli bir gösterge
+   • Tanı için asimetri önemli bir gösterge olduğu söylenebilir
    
-⚠️  DİKKAT EDİLMESİ GEREKENLER:
-   • Aşırı döndürme (>15°) görüntü kalitesini bozar
-   • Dikey flip deri lezyonlarında mantıklı değil
-   • Augmentation gerçekçi olmalı
+ YORUMUM:
+   • Aşırı döndürme (>15°) görüntü kalitesini bozacaktır
+   • Dikey flip deri lezyonlarında mantıklı değildir
+   • Veri Augmentation(veri Çoğaltma) için çıktıların gerçekçi olmalısı
 """)
 
 print("\n" + "="*70)
@@ -867,27 +867,27 @@ print("="*70)
 
 # ==================== BÖLÜM 6: FREKANS ALANINDA FİLTRELEME (FFT) ====================
 print("\n\n" + "="*70)
-print("🌊 BÖLÜM 6: FREKANS ALANINDA FİLTRELEME (FFT)")
+print("BÖLÜM 6: FREKANS ALANINDA FİLTRELEME (FFT)")
 print("="*70)
-print("💡 FFT (Fast Fourier Transform) - Görüntüyü frekans bileşenlerine ayırır")
+print("FFT (Fast Fourier Transform) - Görüntüyü frekans bileşenlerine ayırır")
 print("   Alçak geçiren filtre ile yüksek frekansları (detayları) azaltır")
 print()
 
-# ⚡ PERFORMANS: 3 görüntü kullan
+#  PERFORMANS: 3 görüntü kullan
 sample_images_b6 = selected_images.head(3)
-print(f"⚡ {len(sample_images_b6)} görüntü kullanılıyor")
+print(f" {len(sample_images_b6)} görüntü kullanılıyor")
 print()
 
 # ==================== 6.1. Fourier Dönüşümü ====================
-print("\n📊 6.1. FOURIER DÖNÜŞÜMÜ VE FREKANS SPEKTRUMu")
+print("\n 6.1. FOURIER DÖNÜŞÜMÜ VE FREKANS SPEKTRUMu")
 print("="*70)
-print("💡 FFT sadece grayscale görüntülerde çalışır")
-print("   RGB görüntüler önce grayscale'e dönüştürülür")
+print(" FFT sadece grayscale görüntülerde çalışmaktadır")
+print("   RGB görüntüler önce grayscale'e dönüştürülmelidir")
 print()
 
 def apply_fft(image):
     """
-    Görüntüye FFT uygular ve frekans spektrumunu döndürür
+    Görüntüye FFT uygular ve frekans spektrumunu döndürmektedir
     """
     # FFT uygula
     f_transform = np.fft.fft2(image)
@@ -933,7 +933,7 @@ for idx, (i, row) in enumerate(sample_images_b6.iterrows()):
     plt.savefig(f'13_fft_spectrum_{idx + 1}.png', dpi=150, bbox_inches='tight')
     plt.show()
     plt.close()
-    print(f"✅ FFT spektrum {idx + 1} kaydedildi")
+    print(f" FFT spektrum {idx + 1} kaydedildi")
 
 print("\n💡 Frekans Spektrumu Yorumu:")
 print("""
@@ -941,14 +941,14 @@ print("""
 • Kenarlar: Yüksek frekanslar (detaylar, kenarlar, dokular)
 • Logaritmik ölçek kullanıldı (görselleştirme için)
 • Parlak noktalar: Güçlü frekans bileşenleri
-• RGB → Grayscale dönüşümü FFT için gerekli
+• RGB → Grayscale dönüşümü FFT için gereklidir
 """)
 
 # ==================== 6.2. Alçak Geçiren Filtre (Low-Pass Filter) ====================
 print("\n" + "="*70)
-print("🔽 6.2. ALÇAK GEÇİREN FİLTRE UYGULAMA")
+print(" 6.2. ALÇAK GEÇİREN FİLTRE UYGULAMA")
 print("="*70)
-print("💡 Yüksek frekansları engeller, düşük frekansları geçirir")
+print(" Yüksek frekansları engeller, düşük frekansları geçirir")
 print("   Sonuç: Bulanık, yumuşatılmış görüntü")
 print()
 
@@ -1026,15 +1026,15 @@ for idx, (i, row) in enumerate(sample_images_b6.iterrows()):
     plt.savefig(f'14_fft_lowpass_{idx + 1}.png', dpi=150, bbox_inches='tight')
     plt.show()
     plt.close()
-    print(f"✅ Alçak geçiren filtre {idx + 1} kaydedildi")
+    print(f" Alçak geçiren filtre {idx + 1} kaydedildi")
 
-print("\n💡 Alçak Geçiren Filtre Yorumu:")
+print("\n Alçak Geçiren Filtre Yorumum:")
 print("""
 • r=20: Çok küçük radius - sadece en düşük frekanslar geçer
   → Çok bulanık görüntü, detaylar tamamen kaybolur
   
 • r=40: Orta radius - dengeli filtreleme
-  → Gürültü azalır, ana yapı korunur
+  → Gürültü azalır, ana yapı korunmuş olur
   
 • r=60: Büyük radius - daha fazla frekans geçer
   → Daha az bulanıklık, detaylar kısmen korunur
@@ -1046,7 +1046,7 @@ print("""
 
 # ==================== 6.3. RGB vs Grayscale FFT Karşılaştırması ====================
 print("\n" + "="*70)
-print("⚖️  6.3. RGB vs GRAYSCALE FFT KARŞILAŞTIRMASI")
+print("  6.3. RGB vs GRAYSCALE FFT KARŞILAŞTIRMASI")
 print("="*70)
 
 # İlk görüntü üzerinde detaylı karşılaştırma
@@ -1104,40 +1104,40 @@ plt.tight_layout()
 plt.savefig('15_fft_rgb_comparison.png', dpi=150, bbox_inches='tight')
 plt.show()
 plt.close()
-print("✅ RGB vs Grayscale karşılaştırması kaydedildi")
+print(" RGB vs Grayscale karşılaştırması kaydedildi")
 
 print("\n" + "="*70)
-print("📊 FFT ANALİZ SONUÇLARI")
+print(" FFT ANALİZ SONUÇLARI")
 print("="*70)
 print("""
-🎯 FREKANS ALANI NEDİR?
+ FREKANS ALANI:
    • Uzamsal alan (spatial): Pikseller yan yana
    • Frekans alanı (frequency): Piksel değişim hızları
    • Düşük frekans: Yavaş değişim (arka plan, düz alanlar)
    • Yüksek frekans: Hızlı değişim (kenarlar, detaylar)
 
-📈 RGB KANALLARI:
+ RGB KANALLARI:
    • Her kanal farklı frekans dağılımı gösterir
-   • Red kanal: Deri tonları için dominant
+   • Red kanal: Deri tonları için dominantdır
    • Green kanal: Orta seviye frekanslar
    • Blue kanal: Genelde daha düşük güç
    
-🔍 GRAYSCALE FFT:
+ GRAYSCALE FFT:
    • RGB kanallarının ağırlıklı ortalaması
    • Tek spektrum → daha basit analiz
-   • Tıbbi görüntü işleme için yeterli
+   • Tıbbi görüntü işleme için yeterli olacaktır
    
-⚡ ALÇAK GEÇİREN FİLTRE:
-   • Gürültü azaltma için etkili
-   • Gaussian blur'a benzer sonuç
-   • Frekans alanında daha kontrollü
-   • Radius: Filtrenin gücünü kontrol eder
+ ALÇAK GEÇİREN FİLTRE:
+   • Gürültü azaltma için etkilidir
+   • Gaussian blur'a benzer sonuç vermiştir
+   • Frekans alanında daha kontrollüdür
+   • Radius: Filtrenin gücünü kontrol etme olanığı tanır
    
-⚠️  DİKKAT EDİLMESİ GEREKENLER:
+  YORUMUM:
    • FFT hesaplaması yoğun işlem gerektirir
-   • Büyük görüntülerde yavaş olabilir
-   • Logaritmik ölçekleme görselleştirme için gerekli
-   • Ters FFT'de faz bilgisi önemli (phase)
+   • Büyük görüntülerde yavaş olabilir.
+   • Logaritmik ölçekleme görselleştirme için gereklidir
+   • Ters FFT'de faz bilgisi önemlidir (phase)
 """)
 
 print("\n" + "="*70)
@@ -1147,18 +1147,18 @@ print("="*70)
 
 # ==================== BÖLÜM 7: KESKİNLEŞTİRME VE ENTERPOLASYON ====================
 print("\n\n" + "="*70)
-print("✨ BÖLÜM 7: KESKİNLEŞTİRME VE ENTERPOLASYON")
+print(" BÖLÜM 7: KESKİNLEŞTİRME VE ENTERPOLASYON")
 print("="*70)
-print("💡 Son bölüm! Görüntüleri keskinleştirecek ve büyüteceğiz")
+print(" Görüntüleri keskinleştirecek ve büyütülecektir")
 print()
 
-# ⚡ PERFORMANS: 3 görüntü kullan
+#  PERFORMANS: 3 görüntü kullan
 sample_images_b7 = selected_images.head(3)
-print(f"⚡ {len(sample_images_b7)} görüntü kullanılıyor")
+print(f" {len(sample_images_b7)} görüntü kullanılıyor")
 print()
 
 # ==================== 7.1. Unsharp Masking ile Keskinleştirme ====================
-print("\n📊 7.1. UNSHARP MASKING İLE KESKİNLEŞTİRME")
+print("\n 7.1. UNSHARP MASKING İLE KESKİNLEŞTİRME")
 print("="*70)
 print("💡 Unsharp Masking: Orijinal - Bulanık = Detaylar")
 print("   Orijinal + (Detaylar × miktar) = Keskin Görüntü")
@@ -1228,24 +1228,24 @@ for idx, (i, row) in enumerate(sample_images_b7.iterrows()):
     plt.savefig(f'16_unsharp_masking_{idx + 1}.png', dpi=150, bbox_inches='tight')
     plt.show()
     plt.close()
-    print(f"✅ Keskinleştirme {idx + 1} kaydedildi")
+    print(f" Keskinleştirme {idx + 1} kaydedildi")
 
-print("\n💡 Unsharp Masking Yorumu:")
+print("\n Unsharp Masking Yorumum:")
 print("""
-• Kenarlar ve detaylar daha belirgin hale gelir
+• Kenarlar ve detaylar daha belirgin hale gelmektedir
 • Lezyon sınırları keskinleşir
-• RGB'de renk bilgisi korunur
-• Grayscale'de kontrast artışı daha net
-• Amount=1.5 dengeli bir keskinleştirme sağlar
+• RGB'de renk bilgisi korunmaktadır
+• Grayscale'de kontrast artışı daha nettir
+• Amount=1.5 dengeli bir keskinleştirme sağlamaktadır
 • Aşırı keskinleştirme (amount>2.0) gürültüyü artırabilir
 """)
 
 # ==================== 7.2. Bicubic Enterpolasyon ile Büyütme ====================
 print("\n" + "="*70)
-print("🔍 7.2. BİCUBİC ENTERPOLASYON İLE BÜYÜTME")
+print(" 7.2. BİCUBİC ENTERPOLASYON İLE BÜYÜTME")
 print("="*70)
-print("💡 Bicubic: 4×4 piksel komşuluğu kullanarak yumuşak büyütme")
-print("   Keskinleştirilmiş görüntüleri 2 kat büyüteceğiz")
+print(" Bicubic: 4×4 piksel komşuluğu kullanarak yumuşak büyütme")
+print("   Keskinleştirilmiş görüntüleri 2 kat büyütülmesi")
 print()
 
 # Her görüntü için keskinleştirme + büyütme
@@ -1307,24 +1307,24 @@ for idx, (i, row) in enumerate(sample_images_b7.iterrows()):
     plt.savefig(f'17_bicubic_interpolation_{idx + 1}.png', dpi=150, bbox_inches='tight')
     plt.show()
     plt.close()
-    print(f"✅ Bicubic enterpolasyon {idx + 1} kaydedildi")
+    print(f" Bicubic enterpolasyon {idx + 1} kaydedildi")
 
-print("\n💡 Bicubic Enterpolasyon Yorumu:")
+print("\n Bicubic Enterpolasyon Yorumum:")
 print("""
 • Keskinleştirilmiş görüntüler 2 kat büyütüldü
-• Bicubic enterpolasyon yumuşak geçişler sağlar
-• Nearest neighbor'a göre çok daha kaliteli
-• Bilinear'a göre daha keskin kenarlar
-• Lezyon detayları büyütmede korundu
-• Keskinleştirme + Büyütme = Optimal sonuç
-• Tıbbi görüntüleme için ideal kombinasyon
+• Bicubic enterpolasyon yumuşak geçişler sağlardı
+• Nearest neighbor'a göre çok daha kalitelidir
+• Bilinear'a göre daha keskin kenarlar oluşmuştur
+• Lezyon detayları büyütmede korunmuştur
+• Keskinleştirme + Büyütme = Optimal sonuç vermiştir.
+• Tıbbi görüntüleme için ideal kombinasyon olarak değerlendirilebilir.
 """)
 
 # ==================== 7.3. Enterpolasyon Yöntemleri Karşılaştırması ====================
 print("\n" + "="*70)
-print("⚖️  7.3. ENTERPOLASYON YÖNTEMLERİ KARŞILAŞTIRMASI")
+print("  7.3. ENTERPOLASYON YÖNTEMLERİ KARŞILAŞTIRMASI")
 print("="*70)
-print("💡 Nearest, Bilinear, Bicubic karşılaştırması")
+print(" Nearest, Bilinear, Bicubic karşılaştırması")
 print()
 
 # İlk görüntü üzerinde karşılaştırma
@@ -1409,49 +1409,49 @@ plt.tight_layout()
 plt.savefig('18_interpolation_comparison.png', dpi=150, bbox_inches='tight')
 plt.show()
 plt.close()
-print("✅ Enterpolasyon karşılaştırması kaydedildi")
+print(" Enterpolasyon karşılaştırması kaydedildi")
 
 print("\n" + "="*70)
-print("📊 ENTERPOLASYON KARŞILAŞTIRMA ANALİZİ")
+print(" ENTERPOLASYON KARŞILAŞTIRMA ANALİZİM")
 print("="*70)
 print("""
-🔍 NEAREST NEIGHBOR (En Yakın Komşu):
+ NEAREST NEIGHBOR (En Yakın Komşu):
    • En hızlı yöntem
    • Pikselleşme (blocky) görünür
-   • Kenarlar pürüzlü
-   • Tıbbi görüntüleme için uygun DEĞİL ❌
+   • Kenarlar pürüzlüdür
+   • Tıbbi görüntüleme için uygun olmadığı değerlendirilebilir
    
-🔸 BILINEAR (İki Doğrusal):
+ BILINEAR (İki Doğrusal):
    • Orta hız
-   • Yumuşak geçişler
-   • Kenarlar biraz bulanık
-   • Genel kullanım için iyi ✅
+   • Yumuşak geçişler vardır
+   • Kenarlar biraz bulanıktır
+   • Genel kullanım için iyidir
    
-✨ BICUBIC (Üç Kübik):
-   • En kaliteli sonuç ⭐
-   • 4×4 piksel komşuluğu kullanır
-   • Keskin kenarlar, yumuşak geçişler
-   • Tıbbi görüntüleme için OPTIMAL ✅
-   • Biraz daha yavaş ama kalite farkı değer
+ BICUBIC (Üç Kübik):
+   • En kaliteli sonuçları vermiştir
+   • 4×4 piksel komşuluğu kullanmaktadır
+   • Keskin kenarlar, yumuşak geçişler vardır
+   • Tıbbi görüntüleme için OPTIMAL olduğunu düşnebiriz
+   • Biraz daha yavaş ancak daha kalite olduğunu değerlendirebiliriz
    
-🎯 DERİ LEZYONLARI İÇİN:
-   → Bicubic enterpolasyon tercih edilmeli
-   → Keskinleştirme önce yapılmalı
-   → 2x'den fazla büyütmede kalite düşer
-   → Diagnostik amaçlı büyütme için ideal
+DERİ LEZYONLARI İÇİN YORUMUM:
+   → Bicubic enterpolasyon tercih edilmelidir
+   → Keskinleştirme önce yapılmalıdır
+   → 2x'den fazla büyütmede kalite düşürebilir
+   → görsel tanı amaçlı büyütme için ideal olabilir.
 """)
 
 print("\n" + "="*70)
-print("🎉🎉🎉 BÖLÜM 7 TAMAMLANDI! 🎉🎉🎉")
+print(" BÖLÜM 7 TAMAMLANDI! ")
 print("="*70)
-print("\n📌 Sonuçlar:")
+print("\n Sonuçlar:")
 print("  - Unsharp masking: 3 görüntü")
 print("  - Bicubic büyütme: 3 görüntü (2x büyütme)")
 print("  - Enterpolasyon karşılaştırma: 1 detaylı analiz")
 print("  - Toplam: 7 grafik")
 
 print("\n" + "="*70)
-print("🎊🎊🎊 TÜM PROJE TAMAMLANDI! 🎊🎊🎊")
+print(" TÜM PROJE GÖRÜNTÜ İŞLEMLERİ TAMAMLANMIŞTIR")
 print("="*70)
 print("""
 ✅ TAMAMLANAN TÜM BÖLÜMLER:
@@ -1463,10 +1463,10 @@ print("""
    6. ✅ FFT (Frekans Alanı Filtreleme)
    7. ✅ Keskinleştirme ve Enterpolasyon
 
-📊 TOPLAM İSTATİSTİKLER:
+ TOPLAM İSTATİSTİKLER:
    • Toplam grafik sayısı: ~45 grafik
-   • İşlenen görüntü: 1000 adet
+   • İşlenen görüntü: 1000 adet 
    • Uygulanan teknik: 15+ farklı yöntem
-   • Veri seti boyutu: 2.26 GB
+   • Orjinal Veri seti boyutu: 2.26 GB
    
 """)
