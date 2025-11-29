@@ -1,4 +1,4 @@
-# 🔬 ISIC Cilt Lezyonu Analizi - Sayısal Görüntü İşleme Projesi
+#  ISIC Cilt Lezyonu Analizi - Sayısal Görüntü İşleme Projesi
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green.svg)
@@ -12,7 +12,7 @@
 
 ---
 
-## 📚 Proje Raporu
+##  Proje Raporu
 
 📄 **[Proje Raporunu İnceleyin (PDF)](https://github.com/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/blob/main/docs/Sayisal%20G%C3%B6r%C3%BCnt%C3%BC%20%C4%B0%C5%9Fleme%20Proje.pdf)** - Detaylı analiz ve gözlemlerim
 
@@ -28,7 +28,7 @@
 
 ---
 
-### 💻 Lokal Bilgisayarınızda
+###  Lokal Bilgisayarınızda
 
 ```bash
 # 1. Repoyu klonlayın
@@ -53,7 +53,7 @@ python isic_project.py
 
 Bu projede, ISIC (International Skin Imaging Collaboration) deri lezyonu veri setinde kapsamlı görüntü işleme tekniklerinin uygulamasını içermektedir.Çalışma kapsamında, ISIC 2018 Skin Lesion Dataset kullanılarak, ISIC deri lezyonu görüntüleri üzerinde hem RGB (renkli) hem grayscale (gri tonlamalı) görüntü işleme tekniklerini uygulanmış, program çıktıları üzerinden adım adım tüm işlemler incelenmiştir.Paylaşılan sonuçlar üzerinden ve programın ürettiği ekran çıktıları üzerinden elde edilen sonuçlar yorumlanmıştır.Çalışma kapsamında, Python tabanlı bir geliştirme yapılmış ve çalışma github’a yüklenmiştir. Çalışma esnasında veri setleri yüklenip analiz edildikten sonra, kanal sayılarını ve dosya boyutu dağılımlarının kontrolü yapılmış, rastgele seçilen görüntüler üzerinden RGB-Grayscale dönüşümleri gerçekleştirilmiş, seçilen görüntülerin minimum piksel değeri, maksimum piksel değeri, ortalama ve standart sapmaları incelenmiştir. Histogram analizi yapılarak, yorumlanmıştır. Sonrasında görüntü işleme ve iyileştirme teknikleri uygulanıp, sonuçları incelenmiştir. (Stretching, Equalization, Gamma). Ardından gürültü azaltma(Median, Gaussian) ve döndürme ve ayna çevirme denenmiştir.FFT kapsamında Fourier dönüşümü yapılmış, Unsharp Masking ve Bicubic Enterpolasyon ile proje tamamlanmıştır.
 
-### 🎯 Uygulanan Teknikler
+###  Uygulanan Teknikler
 
 1. ✅ **Veri Analizi** - Görüntü özellikleri ve dağılımları
 2. ✅ **Görselleştirme** - RGB vs Grayscale karşılaştırma  
@@ -67,7 +67,7 @@ Bu projede, ISIC (International Skin Imaging Collaboration) deri lezyonu veri se
 
 ---
 
-## 📁 Proje Yapısı
+##  Proje Yapısı
 
 ```
 UU_DIP_ISIC_SKIN_LESION_ANALYSIS/
@@ -93,7 +93,7 @@ UU_DIP_ISIC_SKIN_LESION_ANALYSIS/
 
 ---
 
-## 🔬 Görüntü İşleme Yöntemleri
+##  Görüntü İşleme Yöntemleri
 
 ### Kontrast İyileştirme
 - **CLAHE** (Contrast Limited Adaptive Histogram Equalization)
@@ -112,7 +112,7 @@ UU_DIP_ISIC_SKIN_LESION_ANALYSIS/
 
 ---
 
-## 📊 Veri Seti
+##  Veri Seti
 
 - **Kaynak**: https://challenge.isic-archive.com/data/#2018 , https://www.kaggle.com/datasets/nodoubttome/skin-cancer9-classesisic
 - **Sınıf Sayısı**: 9 farklı cilt kanseri türü
@@ -121,10 +121,10 @@ UU_DIP_ISIC_SKIN_LESION_ANALYSIS/
 
 ---
 
-## 📄 Dökümanlar
+##  Dökümanlar
 
-- 📊 **[Proje Raporu (PDF)](https://github.com/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/blob/main/docs/Sayisal%20G%C3%B6r%C3%BCnt%C3%BC%20%C4%B0%C5%9Fleme%20Proje.pdf)** - Detaylı analiz ve bulgular
-- 📓 **[Google Colab Notebook](https://colab.research.google.com/github/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/blob/main/isic_analysis_colab.ipynb)** - İnteraktif çalışma ortamı
+-  **[Proje Raporu (PDF)](https://github.com/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/blob/main/docs/Sayisal%20G%C3%B6r%C3%BCnt%C3%BC%20%C4%B0%C5%9Fleme%20Proje.pdf)** - Detaylı analiz ve bulgular
+-  **[Google Colab Notebook](https://colab.research.google.com/github/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/blob/main/isic_analysis_colab.ipynb)** - İnteraktif çalışma ortamı
 
 ---
 
@@ -148,16 +148,16 @@ pip install -r requirements.txt
 
 ---
 
-## 👨‍🎓 Proje Sahibi
+##  Proje Sahibi
 
 **Mustafa Engin Dalgıç**
-- 🎓 Üsküdar Üniversitesi - Bilgisayar Mühendisliği Yüksek Lisans
-- 📧 engindalgic86@gmail.com
-- 🆔 Öğrenci No: 254309502
+-  Üsküdar Üniversitesi - Bilgisayar Mühendisliği Yüksek Lisans
+-  engindalgic86@gmail.com
+-  Öğrenci No: 254309502
 
 ---
 
-## 📚 Kaynaklar
+##  Kaynaklar
 
 - [ISIC Archive](https://www.isic-archive.com/)
 - [OpenCV Documentation](https://docs.opencv.org/)
@@ -165,21 +165,21 @@ pip install -r requirements.txt
 
 ---
 
-## 📄 Lisans
+##  Lisans
 
 MIT License - Detaylar için `LICENSE` dosyasına bakınız.
 
 ---
 
-## 💬 Geri Bildirim
+##  Geri Bildirim
 
 Sorularınız veya önerileriniz için:
-- 📧 Email: engindalgic86@gmail.com
-- 🐛 GitHub Issues: [Sorun bildirin](https://github.com/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/issues)
+-  Email: engindalgic86@gmail.com
+-  GitHub Issues: [Sorun bildirin](https://github.com/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/issues)
 
 ---
 
-## 🌟 Hızlı Başlangıç
+##  Hızlı Başlangıç
 
 ### Colab İçin (Önerilen):
 1. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/blob/main/isic_analysis_colab.ipynb) ← Buraya tıkla
@@ -196,16 +196,16 @@ python isic_project.py
 
 ---
 
-## 📸 Örnek Çıktılar
+##  Örnek Çıktılar
 
 Programın ürettiği grafik örnekleri:
 
-- 🎨 **RGB vs Grayscale** karşılaştırmaları
-- 📊 **Histogram** analizleri
-- ✨ **CLAHE** kontrast iyileştirme
-- 🔇 **Gürültü azaltma** filtreleri
-- 🔄 **Geometrik dönüşümler**
-- 📐 **FFT frekans analizleri**
+-  **RGB vs Grayscale** karşılaştırmaları
+-  **Histogram** analizleri
+-  **CLAHE** kontrast iyileştirme
+-  **Gürültü azaltma** filtreleri
+-  **Geometrik dönüşümler**
+-  **FFT frekans analizleri**
 
 Tüm grafikleri görmek için programı çalıştırabilirsiniz.
 
