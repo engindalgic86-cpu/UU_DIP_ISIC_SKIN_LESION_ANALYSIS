@@ -22,7 +22,7 @@
 
 ### Google Colab 
 
-**Kurulum gerektirmez! Tarayıcıda direkt çalışır.**
+**Kurulum gerektirmeden,tarayıcıda direkt çalıştırılabilir.**
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/engindalgic86-cpu/UU_DIP_ISIC_SKIN_LESION_ANALYSIS/blob/main/isic_analysis_colab.ipynb)
 
