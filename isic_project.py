@@ -1464,7 +1464,7 @@ print("""
    7. ✅ Keskinleştirme ve Enterpolasyon
 
  TOPLAM İSTATİSTİKLER:
-   • Toplam grafik sayısı: ~45 grafik
+   • Toplam grafik sayısı: ~45 grafik (tum_grafikler.zip)
    • İşlenen görüntü: 1000 adet 
    • Uygulanan teknik: 15+ farklı yöntem
    • Orjinal Veri seti boyutu: 2.26 GB
